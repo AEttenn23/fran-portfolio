@@ -167,17 +167,11 @@ main { padding-top: var(--header-h); }
 .skill-list { list-style: none; color: var(--ink-dim); font-size: 15px; }
 .skill-list li { padding: 7px 0; }
 
-.software-group-title { font-weight: 600; color: var(--ink); font-size: 15px; margin: 4px 0 8px; }
+.software-group-title { font-weight: 600; color: var(--ink); font-size: 15px; margin: 18px 0 4px; }
+.software-group-title:first-of-type { margin-top: 4px; }
 .software { list-style: none; }
-.software li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 7px 0 7px 20px;
-  color: var(--ink-dim);
-  font-size: 15px;
-}
-.software img { width: 22px; height: 22px; border-radius: 4px; }
+.software li { padding: 4px 0 4px 20px; color: var(--ink-dim); font-size: 15px; }
+.skills-grid h3.languages-title { margin: 40px 0 10px; }
 
 /* Projects */
 
@@ -207,7 +201,29 @@ main { padding-top: var(--header-h); }
 .job-body { color: var(--ink-dim); font-size: 15px; }
 .job-body strong { color: var(--ink); font-weight: 600; }
 .job-body ul { list-style: none; margin-top: 8px; }
+.job-body li { padding-left: 12px; text-indent: -12px; }
 .job-body li::before { content: '- '; }
+
+.subhead {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 70px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+/* Testimonials */
+
+.quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+.quote {
+  background: var(--bg-alt);
+  border-left: 3px solid var(--accent);
+  padding: 32px 36px;
+}
+.quote blockquote { font-size: 16px; color: var(--text); line-height: 1.75; }
+.quote figcaption { margin-top: 20px; font-weight: 600; }
+.quote figcaption span { display: block; font-weight: 400; font-size: 13px; color: var(--text-dim); }
 
 /* Contact */
 
@@ -309,7 +325,9 @@ main { padding-top: var(--header-h); }
 
   .section { padding: 70px 24px; }
   .section-title, .contact h2 { font-size: 44px; }
-  .skills-grid, .job { grid-template-columns: 1fr; gap: 24px; }
+  .skills-grid, .job, .quotes { grid-template-columns: 1fr; gap: 24px; }
+  .subhead { font-size: 28px; }
+  .quote { padding: 24px; }
   .contact { padding: 100px 24px; }
   .work-hero { padding: 60px 24px 10px; }
   .work-hero h1 { font-size: 38px; }
