@@ -47,18 +47,18 @@ if (workRoot) {
   const p = PROJECTS[index];
   const prev = PROJECTS[(index - 1 + PROJECTS.length) % PROJECTS.length];
   const next = PROJECTS[(index + 1) % PROJECTS.length];
-  const artstationUrl = `https://www.artstation.com/artwork/${p.id}`;
 
   document.title = `${p.title} | Francisco Rodriguez Morales`;
   workRoot.innerHTML = `
     <section class="work-hero">
       <h1>${escapeHtml(p.title)}</h1>
       <p class="description">${linkify(p.description)}</p>
-      ${p.hasVideo ? `<p class="video-note">This project includes video turntables, <a href="${artstationUrl}" target="_blank" rel="noopener">watch them on ArtStation</a>.</p>` : ''}
       <div class="divider"></div>
     </section>
     <div class="gallery">
-      ${p.images.map((src) => `<img src="${src}" alt="${escapeHtml(p.title)}" loading="lazy">`).join('')}
+      ${p.images.map((item) => (item.video
+        ? `<video src="${item.video}" poster="${item.poster}" controls muted loop playsinline autoplay preload="metadata"></video>`
+        : `<img src="${item}" alt="${escapeHtml(p.title)}" loading="lazy">`)).join('')}
     </div>
     <nav class="work-nav">
       <a class="prev" href="work.html?id=${prev.id}"><span class="label">&larr; Previous</span><span class="title">${escapeHtml(prev.title)}</span></a>

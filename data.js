@@ -1,6 +1,7 @@
 // Portfolio data, taken from https://franrodriguezmorales.artstation.com/
 // Image shorthand: "a|path" -> https://cdna.artstation.com/p/assets/images/images/path ("b" -> cdnb)
 // The site serves local copies from images/<id>/ (cover as cover-<file>), downloaded from these URLs.
+// { video: 'name' } entries are turntables stored as videos/<id>/name.mp4 with name.jpg as poster.
 
 const ARTSTATION = 'https://www.artstation.com/franrodriguezmorales';
 
@@ -27,7 +28,6 @@ const PROJECTS = [
     title: 'Chucky and Props - Game Ready',
     cover: 'https://cdna.artstation.com/p/assets/covers/images/102/294/326/medium/francisco-rodriguez-morales-francisco-rodriguez-morales-thumbnail2.webp?1788991647',
     description: 'Wanted to make a character from A to Z, so I choosed Chucky, not just because I love it but because I don\'t see too much of this little guy (except for the DBD one), so I go all in and tried to make a fusion of the Chucky\'s versions I liked the most and this came out.\nAnd well, for the props, I think it wouldn\'t be Chucky without his bloody knife because "A true classic never goes out of style" ;DDD.\nHope y\'all like it.',
-    hasVideo: true,
     images: [
       'b|102/295/265/large/francisco-rodriguez-morales-2.webp?1788994676',
       'b|102/295/275/large/francisco-rodriguez-morales-turnaround.webp?1788994691',
@@ -38,8 +38,10 @@ const PROJECTS = [
       'a|102/294/332/large/francisco-rodriguez-morales-propsall-props-005.webp?1788991692',
       'b|102/294/329/large/francisco-rodriguez-morales-props-done2.webp?1788991684',
       'a|102/294/330/large/francisco-rodriguez-morales-props-done2-painted.webp?1788991688',
+      { video: 'turntable-1' },
       'a|102/287/686/large/francisco-rodriguez-morales-imagen-2026-09-09-200204269.webp?1788976924',
       'b|102/295/371/large/francisco-rodriguez-morales-fnguer.webp?1788995099',
+      { video: 'turntable-2' },
       'a|102/295/280/large/francisco-rodriguez-morales-6.webp?1788994711',
       'b|102/295/279/large/francisco-rodriguez-morales-5.webp?1788994706',
       'b|102/295/283/large/francisco-rodriguez-morales-7.webp?1788994715',
@@ -184,9 +186,9 @@ const PROJECTS = [
     title: 'Monkey Sketch - Practice',
     cover: 'https://cdnb.artstation.com/p/assets/covers/images/090/012/803/medium/francisco-rodriguez-morales-francisco-rodriguez-morales-screenshot-2025-07-16-003546.jpg?1752620832',
     description: 'Study of Chimpanzee.\nBegan in nomad for android in my free time, finished on Zbrush.',
-    hasVideo: true,
     images: [
       'a|090/012/272/large/francisco-rodriguez-morales-monkey.jpg?1752619296',
+      { video: 'turntable' },
     ],
   },
   {
@@ -194,13 +196,13 @@ const PROJECTS = [
     title: 'Plague Faun - Concept/Practice',
     cover: 'https://cdnb.artstation.com/p/assets/covers/images/090/207/853/medium/francisco-rodriguez-morales-francisco-rodriguez-morales-thumbnail1.jpg?1753226702',
     description: 'This project started as a simple bust, based on a photo I found on Pinterest. As I worked on it, I started to get some Witcher-style creature vibes, so I decided to completely change direction and turn it into a full-body piece—combining anatomy practice, concept art, and some Fibermesh experimentation.\nIn the end… I wasn’t really sure where it was going.\nStill, I learned a few important lessons along the way:\nDon’t change the project scope without having a clear plan.\nDon’t reinvent the wheel—stick to proven workflows.\nUse polygroups.\nAnd most importantly: save your work more often!\nEven if it’s not one of my strongest pieces, it’s the first full-body sculpt I’ve completed—so it marks a small milestone in my journey.\nHope you like it!\n(As for me… I’m definitely not opening that file again 😅)',
-    hasVideo: true,
     images: [
       'b|090/207/631/large/francisco-rodriguez-morales-faun75.jpg?1753226025',
       'b|090/207/635/large/francisco-rodriguez-morales-faun7.jpg?1753226042',
       'b|090/207/649/large/francisco-rodriguez-morales-faun5.jpg?1753226086',
       'b|090/207/645/large/francisco-rodriguez-morales-faun6.jpg?1753226077',
       'a|090/207/272/large/francisco-rodriguez-morales-faun55.jpg?1753225086',
+      { video: 'turntable' },
       'b|090/206/927/large/francisco-rodriguez-morales-faun3.jpg?1753223989',
       'a|090/207/672/large/francisco-rodriguez-morales-faun1.jpg?1753226175',
     ],
@@ -210,11 +212,12 @@ const PROJECTS = [
     title: 'Likeness Study - Arthur Morgan',
     cover: 'https://cdna.artstation.com/p/assets/covers/images/092/590/726/medium/francisco-rodriguez-morales-francisco-rodriguez-morales-sin-titulo-1.webp?1760071297',
     description: 'Gave myself 3 hours.\nStarted with Head Planes of Zbrush.',
-    hasVideo: true,
     images: [
       'a|092/590/144/large/francisco-rodriguez-morales-am3.webp?1760068967',
       'b|092/590/145/large/francisco-rodriguez-morales-am1.webp?1760068974',
       'b|092/590/147/large/francisco-rodriguez-morales-am2.webp?1760068976',
+      { video: 'closeup' },
+      { video: 'turntable' },
     ],
   },
   {
@@ -233,9 +236,9 @@ const PROJECTS = [
     title: 'Grey scale study',
     cover: 'https://cdna.artstation.com/p/assets/images/images/069/681/912/medium/francisco-rodriguez-morales-asset.jpg?1700730265',
     description: 'I wanted to draw some kind of cleric medieval monk so here it is hehe',
-    hasVideo: true,
     images: [
       'a|069/681/912/large/francisco-rodriguez-morales-asset.jpg?1700730265',
+      { video: 'process' },
     ],
   },
 ].map((p) => {
@@ -243,6 +246,8 @@ const PROJECTS = [
   return {
     ...p,
     cover: `images/${p.id}/cover-${file(p.cover)}`,
-    images: p.images.map((s) => `images/${p.id}/${file(img(s))}`),
+    images: p.images.map((s) => (s.video
+      ? { video: `videos/${p.id}/${s.video}.mp4`, poster: `videos/${p.id}/${s.video}.jpg` }
+      : `images/${p.id}/${file(img(s))}`)),
   };
 });

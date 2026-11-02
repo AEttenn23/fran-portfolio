@@ -262,11 +262,10 @@ main { padding-top: var(--header-h); }
   white-space: pre-line;
 }
 .work-hero .description a { color: var(--accent); word-break: break-all; }
-.video-note { margin-top: 20px; font-size: 14px; color: var(--text-dim); }
-.video-note a { color: var(--accent); }
 
 .gallery { display: flex; flex-direction: column; gap: 8px; max-width: 1600px; margin: 0 auto; }
 .gallery img { width: 100%; height: auto; cursor: zoom-in; background: var(--bg-alt); }
+.gallery video { width: 100%; max-height: 90vh; background: #000; }
 
 .work-nav {
   display: flex;
